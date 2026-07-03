@@ -1,9 +1,10 @@
 <!doctype html>
-<html lang="en">
+<html lang="zh-CN">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Stringline — logistics hub bench</title>
+    <!-- Brand mark only; shell.ts sets the full document.title from i18n (S.header.docTitle). -->
+    <title>Stringline</title>
     <style>
       :root {
         color-scheme: dark;
@@ -45,6 +46,21 @@
         margin: 0;
         color: #94a3b8;
         font-size: 13px;
+      }
+      /* persistent "怎么玩？" reopen button, pushed to the right of the header */
+      .sl-guide-btn {
+        margin-left: auto;
+        align-self: center;
+        background: #1e293b;
+        color: #e2e8f0;
+        border: 1px solid #334155;
+        border-radius: 4px;
+        padding: 5px 12px;
+        cursor: pointer;
+        font: inherit;
+      }
+      .sl-guide-btn:hover {
+        background: #334155;
       }
 
       /* --- primary surface: editor -> bench (edit layout -> send to bench -> run -> read KPIs) --- */
@@ -109,34 +125,33 @@
         white-space: pre-wrap;
       }
     </style>
-    <script type="module" crossorigin src="/stringline-web/assets/index-Ct7pukGP.js"></script>
+    <script type="module" crossorigin src="/stringline-web/assets/index-DWFgSHRS.js"></script>
     <link rel="modulepreload" crossorigin href="/stringline-web/assets/Geometry-U1-UghDc.js">
     <link rel="modulepreload" crossorigin href="/stringline-web/assets/RenderTargetSystem-CGbjLE8J.js">
   </head>
   <body>
     <div id="app">
+      <!-- All user-facing text is filled by shell.ts from i18n.ts (no string literals in markup). -->
       <header class="sl-header" id="sl-header">
-        <h1>Stringline</h1>
-        <p class="sl-pitch">
-          Design a logistics hub, bench it against rush-hour demand, and grind the throughput.
-        </p>
+        <h1 id="sl-title"></h1>
+        <p class="sl-pitch" id="sl-pitch"></p>
       </header>
 
       <!-- The product: a bench-first surface (DESIGN.md §3). The editor feeds the bench. -->
       <main class="sl-main" id="sl-main">
         <section class="sl-panel">
-          <h2 class="sl-step">Step 1 — Design the hub layout</h2>
+          <h2 class="sl-step" id="sl-step-1"></h2>
           <div id="editor-root"></div>
         </section>
         <section class="sl-panel">
-          <h2 class="sl-step">Step 2 — Bench it, run, read the KPIs</h2>
+          <h2 class="sl-step" id="sl-step-2"></h2>
           <div id="bench-root"></div>
         </section>
       </main>
 
       <!-- Dev/debug only: the M0-7 entity render harness. Collapsed by default; NOT product surface. -->
       <details class="sl-dev" id="dev-harness">
-        <summary>Dev / debug — entity render harness (M0-7)</summary>
+        <summary id="dev-summary"></summary>
         <div id="harness-root"></div>
       </details>
     </div>
