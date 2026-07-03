@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Stringline — logistics hub bench</title>
+    <style>
+      :root {
+        color-scheme: dark;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        background: #0b0e14;
+        color: #cbd5e1;
+        font: 13px/1.4 ui-monospace, SFMono-Regular, Menlo, monospace;
+      }
+      #app {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        padding: 16px;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      /* --- header: game name + one-line pitch --- */
+      .sl-header {
+        display: flex;
+        align-items: baseline;
+        gap: 12px;
+        flex-wrap: wrap;
+        border-bottom: 1px solid #1e293b;
+        padding-bottom: 12px;
+      }
+      .sl-header h1 {
+        margin: 0;
+        font-size: 22px;
+        letter-spacing: 0.02em;
+        color: #e2e8f0;
+      }
+      .sl-pitch {
+        margin: 0;
+        color: #94a3b8;
+        font-size: 13px;
+      }
+
+      /* --- primary surface: editor -> bench (edit layout -> send to bench -> run -> read KPIs) --- */
+      .sl-main {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+      .sl-step {
+        margin: 0 0 8px;
+        color: #64748b;
+        font-size: 11px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+      }
+
+      /* --- dev/debug: the M0-7 entity render harness, demoted behind a collapsed toggle --- */
+      .sl-dev {
+        border: 1px solid #1e293b;
+        border-radius: 6px;
+      }
+      .sl-dev > summary {
+        cursor: pointer;
+        padding: 8px 12px;
+        color: #64748b;
+        user-select: none;
+      }
+      .sl-dev > summary:hover {
+        color: #94a3b8;
+      }
+      #harness-root {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        padding: 0 12px 12px;
+      }
+      .controls {
+        display: flex;
+        gap: 6px;
+        flex-wrap: wrap;
+      }
+      .controls button {
+        background: #1e293b;
+        color: #e2e8f0;
+        border: 1px solid #334155;
+        border-radius: 4px;
+        padding: 4px 10px;
+        cursor: pointer;
+      }
+      .controls button:hover {
+        background: #334155;
+      }
+      #scene {
+        border: 1px solid #1e293b;
+        border-radius: 6px;
+        display: block;
+        max-width: 100%;
+      }
+      .hud {
+        color: #38bdf8;
+        white-space: pre-wrap;
+      }
+    </style>
+    <script type="module" crossorigin src="/stringline-web/assets/index-Ct7pukGP.js"></script>
+    <link rel="modulepreload" crossorigin href="/stringline-web/assets/Geometry-U1-UghDc.js">
+    <link rel="modulepreload" crossorigin href="/stringline-web/assets/RenderTargetSystem-CGbjLE8J.js">
+  </head>
+  <body>
+    <div id="app">
+      <header class="sl-header" id="sl-header">
+        <h1>Stringline</h1>
+        <p class="sl-pitch">
+          Design a logistics hub, bench it against rush-hour demand, and grind the throughput.
+        </p>
+      </header>
+
+      <!-- The product: a bench-first surface (DESIGN.md §3). The editor feeds the bench. -->
+      <main class="sl-main" id="sl-main">
+        <section class="sl-panel">
+          <h2 class="sl-step">Step 1 — Design the hub layout</h2>
+          <div id="editor-root"></div>
+        </section>
+        <section class="sl-panel">
+          <h2 class="sl-step">Step 2 — Bench it, run, read the KPIs</h2>
+          <div id="bench-root"></div>
+        </section>
+      </main>
+
+      <!-- Dev/debug only: the M0-7 entity render harness. Collapsed by default; NOT product surface. -->
+      <details class="sl-dev" id="dev-harness">
+        <summary>Dev / debug — entity render harness (M0-7)</summary>
+        <div id="harness-root"></div>
+      </details>
+    </div>
+
+    <!-- Product shell: mounts the editor + bench and wires the "Send to bench" handoff. -->
+    <!-- Dev harness: sim-in-worker + Pixi dots. Mounts into #harness-root above. -->
+  </body>
+</html>

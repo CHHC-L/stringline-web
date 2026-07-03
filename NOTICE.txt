@@ -1,0 +1,9 @@
+Stringline — compiled web artifacts
+Copyright (c) 2026 Tianqin. All rights reserved.
+
+This repository hosts the compiled, minified web build of Stringline for the sole purpose of
+serving it via GitHub Pages. The Stringline source code is proprietary and is NOT published here
+or anywhere public.
+
+No permission is granted to any person to copy, modify, redistribute, reverse-engineer, decompile,
+or create derivative works from these artifacts, in whole or in part. ALL RIGHTS RESERVED.
