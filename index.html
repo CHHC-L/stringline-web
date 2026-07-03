@@ -92,6 +92,9 @@
       .sl-dev > summary:hover {
         color: #94a3b8;
       }
+      #stamp-root {
+        padding: 12px 12px 0;
+      }
       #harness-root {
         display: flex;
         flex-direction: column;
@@ -125,7 +128,7 @@
         white-space: pre-wrap;
       }
     </style>
-    <script type="module" crossorigin src="/stringline-web/assets/index-DWFgSHRS.js"></script>
+    <script type="module" crossorigin src="/stringline-web/assets/index-BJ9wtAKz.js"></script>
     <link rel="modulepreload" crossorigin href="/stringline-web/assets/Geometry-U1-UghDc.js">
     <link rel="modulepreload" crossorigin href="/stringline-web/assets/RenderTargetSystem-CGbjLE8J.js">
   </head>
@@ -149,9 +152,11 @@
         </section>
       </main>
 
-      <!-- Dev/debug only: the M0-7 entity render harness. Collapsed by default; NOT product surface. -->
+      <!-- Dev/debug only: the M1-5 black-box stamp flow (M2 plumbing) + the M0-7 entity render
+           harness. Collapsed by default; NOT product surface. -->
       <details class="sl-dev" id="dev-harness">
         <summary id="dev-summary"></summary>
+        <div id="stamp-root"></div>
         <div id="harness-root"></div>
       </details>
     </div>
